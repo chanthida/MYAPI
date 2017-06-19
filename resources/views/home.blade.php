@@ -28,7 +28,7 @@
                             <font color="green">OK</font>
                             <br><br>
                             <pre>
-curl -H "Content-Type: application/json" -X GET -d '{"sessionKey":"d0a2a41aa454d997bfe69d3aa404b5e21256355c338b0bd7844dd79faaa6ac565a21874aa57d973609c06a47804360e78d8c89f3940c921ffe44e3e4cdff65fcb302fb0911c35e01b90a5fa88f69f6e8ba698d23fcc6744628250cf2e750726e93bdd70d98e5a1204c826598da730de0707f9a67e898b179453c446039708351b25dbe2290f6a0488ae9867ea7724988a6c179dc33f5efece71622e5fa9858620d0534097002996ea74ec4f3dc20d1fae64c77ff853c05bbb06d342f604202d39e5a8842afae6118995dbdb2de31d6b81ca0b70c23291c2535d7610316187100827d5a40aa93f5f223c9b64166c5ba0475d961317064c6d68c5fce2e73f69bdc"}' http://api2-client.myhemisphere.com/accounts.xml
+curl -H "Content-Type: application/json" -X GET -d '{"sessionKey":"{{Auth::user()->token}}"}' http://api2-client.myhemisphere.com/accounts.xml
                             </pre>
 
                             @foreach($accounts['data'] as $k => $v)
@@ -45,7 +45,7 @@ curl -H "Content-Type: application/json" -X GET -d '{"sessionKey":"d0a2a41aa454d
                             <font color="green">OK</font>
                             <br><br>
                             <pre>
-curl -H "Content-Type: application/json" -X GET -d '{"sessionKey":"d0a2a41aa454d997bfe69d3aa404b5e21256355c338b0bd7844dd79faaa6ac565a21874aa57d973609c06a47804360e78d8c89f3940c921ffe44e3e4cdff65fcb302fb0911c35e01b90a5fa88f69f6e8ba698d23fcc6744628250cf2e750726e93bdd70d98e5a1204c826598da730de0707f9a67e898b179453c446039708351b25dbe2290f6a0488ae9867ea7724988a6c179dc33f5efece71622e5fa9858620d0534097002996ea74ec4f3dc20d1fae64c77ff853c05bbb06d342f604202d39e5a8842afae6118995dbdb2de31d6b81ca0b70c23291c2535d7610316187100827d5a40aa93f5f223c9b64166c5ba0475d961317064c6d68c5fce2e73f69bdc"}' http://api2-client.myhemisphere.com/items.xml
+curl -H "Content-Type: application/json" -X GET -d '{"sessionKey":"{{Auth::user()->token}}"}' http://api2-client.myhemisphere.com/items.xml
                             </pre>
 
                             @foreach($items['data'] as $k => $v)
@@ -85,7 +85,7 @@ Required parameters:
                             <font color="green">OK</font>
                             <br><br>
                             <pre>
-curl -H "Content-Type: application/json" -X GET -d '{"sessionKey":"d0a2a41aa454d997bfe69d3aa404b5e21256355c338b0bd7844dd79faaa6ac565a21874aa57d973609c06a47804360e78d8c89f3940c921ffe44e3e4cdff65fcb302fb0911c35e01b90a5fa88f69f6e8ba698d23fcc6744628250cf2e750726e93bdd70d98e5a1204c826598da730de0707f9a67e898b179453c446039708351b25dbe2290f6a0488ae9867ea7724988a6c179dc33f5efece71622e5fa9858620d0534097002996ea74ec4f3dc20d1fae64c77ff853c05bbb06d342f604202d39e5a8842afae6118995dbdb2de31d6b81ca0b70c23291c2535d7610316187100827d5a40aa93f5f223c9b64166c5ba0475d961317064c6d68c5fce2e73f69bdc"}' http://api2-client.myhemisphere.com/orders.xml
+curl -H "Content-Type: application/json" -X GET -d '{"sessionKey":"{{Auth::user()->token}}"}' http://api2-client.myhemisphere.com/orders.xml
                             </pre>
 
                             @foreach($orders['data'] as $k => $v)
