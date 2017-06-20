@@ -30,7 +30,7 @@ class HomeController extends Controller
 // GET USER TOKEN
         $user_token = Auth::user()->token;
 
-// GET ALL ACCOUNTS        
+// GET ALL ACCOUNTS  
         $account_url = 'http://api2-client.myhemisphere.com/accounts.xml';
         $client = new Client;
         $results = $client->request('GET', $account_url, [
@@ -42,7 +42,7 @@ class HomeController extends Controller
         $json = json_encode($xml);        
         $accounts = json_decode($json, true);
         //dd($accounts);
-        
+
 // GET ALL ITEMS
         $item_url = 'http://api2-client.myhemisphere.com/items.xml';
         $client = new Client;
@@ -56,13 +56,13 @@ class HomeController extends Controller
         $items = json_decode($json, true);
         //dd($items);
 
-
 // GET ITEM ACCOUNT
-        /*        
-        $item_url = 'http://api2-client.myhemisphere.com/items/account/1.xml';
+        
+        $item_url = 'http://api2-client.myhemisphere.com/items/account.xml';
         $client = new Client;
         $results = $client->request('GET', $item_url, [
             'query' => [
+                'id' => 1,
                 'sessionKey' => $user_token
             ]
         ]);
@@ -70,9 +70,9 @@ class HomeController extends Controller
         $json = json_encode($xml);        
         $itemAccount = json_decode($json, true);
         //dd($itemAccount);
-        */
         
-// GET ALL ORDERS
+
+// GET ALL ORDERS        
         $order_url = 'http://api2-client.myhemisphere.com/orders.xml';
         $client = new Client;
         $results = $client->request('GET', $order_url, [
@@ -86,7 +86,6 @@ class HomeController extends Controller
         //dd($orders);
         
 // GET ORDER ITEM
-        /*
         $order_url = 'http://api2-client.myhemisphere.com/orders/item.xml';
         $client = new Client;
         $results = $client->request('GET', $order_url, [
@@ -98,11 +97,10 @@ class HomeController extends Controller
         $xml = simplexml_load_string($results->getBody(),'SimpleXMLElement', LIBXML_NOCDATA);
         $json = json_encode($xml);        
         $orderItem = json_decode($json, true);
-        dd($orderItem);
-        */
+        //dd($orderItem);
 
-        return view('home', compact('accounts', 'items', 'orders'));        
-
+        return view('home', compact('accounts', 'items', 'itemAccount', 'orders', 'orderItem'));
+        
     }
 
 }
