@@ -145,8 +145,11 @@
                         <div role="tabpanel" class="tab-pane" id="createOrder">  
                             <h3>Order Details</h3>
                             <div class="alert alert-danger">
-                              <strong>Note:</strong> This is just a mock-up version based on incomplete API result.
-                            </div>                             
+                                <strong>Test</strong> - To create Order + Order Items from existing Items/ItemAccounts<br>
+                                <strong>Result</strong> - I can't finish this test.<br>
+                                <strong>Reason:</strong> Based on my understanding I think the ItemAccounts API returns wrong information. So I can't finish this section but mocking-up a few UIs only.
+                            </div>                            
+ 
                             <form class="form-horizontal">
                               <div class="form-group">
                                 <label class="control-label col-sm-4" for="email">Buyer User ID:</label>
