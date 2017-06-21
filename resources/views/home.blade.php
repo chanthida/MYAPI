@@ -11,20 +11,45 @@
                 <div class="panel-body">
                     
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#accounts" aria-controls="accounts" role="tab" data-toggle="tab">Accounts {{-- $accounts['metadata']['total'] --}}</a></li>
-                        <li role="presentation"><a href="#items" aria-controls="items" role="tab" data-toggle="tab">Items {{-- $items['metadata']['total'] --}}</a></li>
-                        <li role="presentation"><a href="#itemAccount" aria-controls="itemAccount" role="tab" data-toggle="tab">Item Account</a></li>
-                        <li role="presentation"><a href="#orders" aria-controls="orders" role="tab" data-toggle="tab">Orders</a></li>
-                        <li role="presentation"><a href="#orderItem" aria-controls="orderItem" role="tab" data-toggle="tab">Order Item</a></li>
-                        <li role="presentation"><a href="#createOrder" aria-controls="createOrder" role="tab" data-toggle="tab">Create Order / Order Item</a></li>                      
+                        <li role="presentation" class="active">
+                            <a href="#accounts" aria-controls="accounts" role="tab" data-toggle="tab">
+                                Accounts <span class="badge">{{ $accounts['metadata']['total'] }}</span>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#items" aria-controls="items" role="tab" data-toggle="tab">                             
+                                Items <span class="badge">{{ $items['metadata']['total'] }}</span>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#itemAccount" aria-controls="itemAccount" role="tab" data-toggle="tab">
+                                Item Account
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#orders" aria-controls="orders" role="tab" data-toggle="tab">
+                                Orders <span class="badge">{{ $items['metadata']['total'] }}</span>
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#orderItem" aria-controls="orderItem" role="tab" data-toggle="tab">
+                                Order Item
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#createOrder" aria-controls="createOrder" role="tab" data-toggle="tab">Create Order / Order Item</a>
+                        </li>                      
                     </ul>
-
 
                     <div class="tab-content">
 
                         <!-- ACCOUNTS -->
                         <div role="tabpanel" class="tab-pane active" id="accounts">
-                            <h3>Account Lists</h3>
+                            <h3>Accounts</h3>
+                            <div class="alert alert-success">
+                                <strong>Test</strong> - To read Accounts from API<br>
+                                <strong>Result</strong> - Able to get result from API
+                            </div>
                             @foreach($accounts['data'] as $k => $v)
                                 @foreach ($v as $key => $value)
                                     @if($key == 'name')
@@ -40,7 +65,11 @@
 
                         <!-- ITEMS -->
                         <div role="tabpanel" class="tab-pane" id="items">  
-                            <h3>Item Lists</h3>  
+                            <h3>Item Lists</h3>
+                            <div class="alert alert-success">
+                                <strong>Test</strong> - To read Items from API<br>
+                                <strong>Result</strong> - Able to get result from API
+                            </div>                                                    
                             @foreach($items['data'] as $k => $v)
                                 @if($k <> 'itemAccountIDs')
                                     {{ $k . ' => ' . $v }} <br>
@@ -57,6 +86,17 @@
                         <!-- ITEM ACCOUNT -->
                         <div role="tabpanel" class="tab-pane" id="itemAccount">  
                             <h3>Item Account Lists</h3>
+                            <div class="alert alert-success">
+                                <strong>Test</strong> - To read Item Account from API.<br>
+                                <strong>Result</strong> - Able to get result from API.                                                    
+                            </div>                            
+                            <div class="alert alert-danger">
+                                <strong>Note:</strong> Able to get result, but system may returns incorrect information.<br><br>
+                                <u>Based on table definition below</u><br>
+                                <strong>ItemAccount</strong> – slave table to Item, contains additional data for the same SKU on different marketplaces, for example title and price are usually different on every marketplace, and depend on the marketplace’s language and currency.<br><br>
+                                
+                                I think system returns only a few information which are not enought to implement next step.
+                            </div>                                                        
                             @foreach($itemAccount['data'] as $k => $v)
                                 @if($k <> 'itemAccountIDs')
                                     {{ $k . ' => ' . $v }} <br>
@@ -67,13 +107,16 @@
                                         {{ $key . ' => ' . $value }} <br>
                                     @endforeach
                                 @endif                
-                            @endforeach
-
+                            @endforeach                            
                         </div>
 
                         <!-- ORDERS -->
                         <div role="tabpanel" class="tab-pane" id="orders"> 
                             <h3>Order Lists</h3>
+                            <div class="alert alert-success">
+                                <strong>Test</strong> - To read Orders from API<br>
+                                <strong>Result</strong> - Able to get result from API                              
+                            </div>                            
                             @foreach($orders['data'] as $k => $v)
                                 {{ $k . ' => ' . $v }} <br>              
                             @endforeach                            
@@ -82,6 +125,17 @@
                         <!-- ORDER ITEM -->
                         <div role="tabpanel" class="tab-pane" id="orderItem">  
                             <h3>Order Item Lists</h3>
+                            <div class="alert alert-success">
+                                <strong>Test</strong> - To read Order Item from API.<br>
+                                <strong>Result</strong> - Able to get result from API.                                                    
+                            </div>                            
+                            <div class="alert alert-danger">
+                                <strong>Note:</strong> Able to get result, but system may returns incorrect information.<br><br>
+                                <u>Based on table definition below</u><br>
+                                <strong>OrderItem</strong> – single line for every SKU in the order with the quantity ordered.<br><br>
+                                
+                                I think system returns only a few information which are not enought to implement next step.
+                            </div>                            
                             @foreach($orders['data'] as $k => $v)
                                 {{ $k . ' => ' . $v }} <br>              
                             @endforeach 
@@ -90,6 +144,9 @@
                         <!-- CREATE ORDER -->
                         <div role="tabpanel" class="tab-pane" id="createOrder">  
                             <h3>Order Details</h3>
+                            <div class="alert alert-danger">
+                              <strong>Note:</strong> This is just a mock-up version based on incomplete API result.
+                            </div>                             
                             <form class="form-horizontal">
                               <div class="form-group">
                                 <label class="control-label col-sm-4" for="email">Buyer User ID:</label>
@@ -408,10 +465,10 @@
                               <hr>
                               <h3>Select Items</h3>
                               <div class="form-group">
-                                <label class="control-label col-sm-4" for="pwd">Select Market Place:</label>
+                                <label class="control-label col-sm-4" for="pwd">Select Marketplace:</label>
                                 <div class="col-sm-6"> 
                                     <select class="form-control" id="account_id" name="account_id">
-                                        <option value="0">Please Select</option>
+                                        <option value="0">Please Select Marketplace</option>
                                         <option value="1">eBay UK</option>
                                         <option value="2">Lazada MY</option>
                                         <option value="3">Lazada TH</option>
@@ -424,11 +481,11 @@
                                 <div class="col-sm-6"> 
                                     <select class="form-control" id="item_id" name="item_id">
                                         <option value="0">Select Item</option>
-                                        <option value="1">Item 1</option>
-                                        <option value="2">Item 2</option>
-                                        <option value="3">Item 3</option>
-                                        <option value="4">Item 4</option>
-                                        <option value="5">Item 5</option>
+                                        <option value="1">Example Item 1</option>
+                                        <option value="2">Example Item 2</option>
+                                        <option value="3">Example Item 3</option>
+                                        <option value="4">Example Item 4</option>
+                                        <option value="5">Example Item 5</option>
                                     </select>   
                                 </div>
                               </div>  
