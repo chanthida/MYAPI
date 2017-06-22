@@ -26,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $isError = true;
 
         //TODO: Always get new sessionKey from API
         $sessionKey_url = 'http://api2-client.myhemisphere.com/login.xml';
@@ -36,12 +37,20 @@ class HomeController extends Controller
                 'password' => "api_test"
             ]
         ]);
+
         $xml = simplexml_load_string($results->getBody(),'SimpleXMLElement', LIBXML_NOCDATA);
         $json = json_encode($xml);        
         $json_sessionKey = json_decode($json, true);
-    
-        $isError = $json_sessionKey['error'];
-        if($isError <> '') {
+        
+        if(isset($json_sessionKey['error'])) {
+            //dd($json_sessionKey['error']);
+            $isError = true;
+        } else {
+            //dd($json_sessionKey);
+            $isError = false;
+        }
+
+        if($isError) {
 
             $accounts = null;
             $items = null;
