@@ -46,99 +46,135 @@
                         <!-- ACCOUNTS -->
                         <div role="tabpanel" class="tab-pane active" id="accounts">
                             <h3>Accounts</h3>
-                            <div class="alert alert-success">
-                                <strong>Test</strong> - To read Accounts from API<br>
-                                <strong>Result</strong> - Able to get result from API
-                            </div>
-                            @foreach($accounts['data'] as $k => $v)
-                                @foreach ($v as $key => $value)
-                                    @if($key == 'name')
-                                    {{ $key }} => <strong><font color="green">{{ $value }}</font></strong>
-                                    @else
-                                    {{ $key . ' => ' . $value }}
-                                    @endif
-                                    <br>
+
+                            @if(is_null($accounts))
+                                <div class="alert alert-danger">
+                                    System error. Please contact your administrator.
+                                </div>
+                            @else
+                                <div class="alert alert-success">
+                                    <strong>Test</strong> - To read Accounts from API<br>
+                                    <strong>Result</strong> - Able to get result from API
+                                </div>
+
+                                @foreach($accounts['data'] as $k => $v)
+                                    @foreach ($v as $key => $value)
+                                        @if($key == 'name')
+                                        {{ $key }} => <strong><font color="green">{{ $value }}</font></strong>
+                                        @else
+                                        {{ $key . ' => ' . $value }}
+                                        @endif
+                                        <br>
+                                    @endforeach
+                                    <hr />
                                 @endforeach
-                                <hr />
-                            @endforeach
+                            @endif
                         </div>
 
                         <!-- ITEMS -->
                         <div role="tabpanel" class="tab-pane" id="items">  
                             <h3>Item Lists</h3>
-                            <div class="alert alert-success">
-                                <strong>Test</strong> - To read Items from API<br>
-                                <strong>Result</strong> - Able to get result from API
-                            </div>                                                    
-                            @foreach($items['data'] as $k => $v)
-                                @if($k <> 'itemAccountIDs')
-                                    {{ $k . ' => ' . $v }} <br>
-                                @else
-                                    {{ $k }} <br>
-                                    @foreach ($v as $key => $value) 
-                                        &nbsp;&nbsp;&nbsp;
-                                        {{ $key . ' => ' . $value }} <br>
-                                    @endforeach
-                                @endif                
-                            @endforeach
+
+                            @if(is_null($items))
+                                <div class="alert alert-danger">
+                                    System error. Please contact your administrator.
+                                </div>
+                            @else
+                                <div class="alert alert-success">
+                                    <strong>Test</strong> - To read Items from API<br>
+                                    <strong>Result</strong> - Able to get result from API
+                                </div>                                                    
+                                @foreach($items['data'] as $k => $v)
+                                    @if($k <> 'itemAccountIDs')
+                                        {{ $k . ' => ' . $v }} <br>
+                                    @else
+                                        {{ $k }} <br>
+                                        @foreach ($v as $key => $value) 
+                                            &nbsp;&nbsp;&nbsp;
+                                            {{ $key . ' => ' . $value }} <br>
+                                        @endforeach
+                                    @endif                
+                                @endforeach
+                            @endif
                         </div>
 
                         <!-- ITEM ACCOUNT -->
                         <div role="tabpanel" class="tab-pane" id="itemAccount">  
                             <h3>Item Account Lists</h3>
-                            <div class="alert alert-success">
-                                <strong>Test</strong> - To read Item Account from API.<br>
-                                <strong>Result</strong> - Able to get result from API.                                                    
-                            </div>                            
-                            <div class="alert alert-danger">
-                                <strong>Note:</strong> Able to get result, but system may returns incorrect information.<br><br>
-                                <u>Based on table definition below</u><br>
-                                <strong>ItemAccount</strong> – slave table to Item, contains additional data for the same SKU on different marketplaces, for example title and price are usually different on every marketplace, and depend on the marketplace’s language and currency.<br><br>
-                                
-                                I think system returns only a few information which are not enought to implement next step.
-                            </div>                                                        
-                            @foreach($itemAccount['data'] as $k => $v)
-                                @if($k <> 'itemAccountIDs')
-                                    {{ $k . ' => ' . $v }} <br>
-                                @else
-                                    {{ $k }} <br>
-                                    @foreach ($v as $key => $value) 
-                                        &nbsp;&nbsp;&nbsp;
-                                        {{ $key . ' => ' . $value }} <br>
-                                    @endforeach
-                                @endif                
-                            @endforeach                            
+
+                            @if(is_null($itemAccount))
+                                <div class="alert alert-danger">
+                                    System error. Please contact your administrator.
+                                </div>
+                            @else
+                                <div class="alert alert-success">
+                                    <strong>Test</strong> - To read Item Account from API.<br>
+                                    <strong>Result</strong> - Able to get result from API.                                                    
+                                </div>                            
+                                <div class="alert alert-danger">
+                                    <strong>Note:</strong> Able to get result, but system may returns incorrect information.<br><br>
+                                    <u>Based on table definition below</u><br>
+                                    <strong>ItemAccount</strong> – slave table to Item, contains additional data for the same SKU on different marketplaces, for example title and price are usually different on every marketplace, and depend on the marketplace’s language and currency.<br><br>
+                                    
+                                    I think system returns only a few information which are not enought to implement next step.
+                                </div>                                                        
+                                @foreach($itemAccount['data'] as $k => $v)
+                                    @if($k <> 'itemAccountIDs')
+                                        {{ $k . ' => ' . $v }} <br>
+                                    @else
+                                        {{ $k }} <br>
+                                        @foreach ($v as $key => $value) 
+                                            &nbsp;&nbsp;&nbsp;
+                                            {{ $key . ' => ' . $value }} <br>
+                                        @endforeach
+                                    @endif                
+                                @endforeach 
+                            @endif                           
                         </div>
 
                         <!-- ORDERS -->
                         <div role="tabpanel" class="tab-pane" id="orders"> 
                             <h3>Order Lists</h3>
-                            <div class="alert alert-success">
-                                <strong>Test</strong> - To read Orders from API<br>
-                                <strong>Result</strong> - Able to get result from API                              
-                            </div>                            
-                            @foreach($orders['data'] as $k => $v)
-                                {{ $k . ' => ' . $v }} <br>              
-                            @endforeach                            
+
+                            @if(is_null($orders))
+                                <div class="alert alert-danger">
+                                    System error. Please contact your administrator.
+                                </div>
+                            @else
+                                <div class="alert alert-success">
+                                    <strong>Test</strong> - To read Orders from API<br>
+                                    <strong>Result</strong> - Able to get result from API                              
+                                </div>                            
+                                @foreach($orders['data'] as $k => $v)
+                                    {{ $k . ' => ' . $v }} <br>              
+                                @endforeach                            
+                            @endif
                         </div>
 
                         <!-- ORDER ITEM -->
                         <div role="tabpanel" class="tab-pane" id="orderItem">  
                             <h3>Order Item Lists</h3>
-                            <div class="alert alert-success">
-                                <strong>Test</strong> - To read Order Item from API.<br>
-                                <strong>Result</strong> - Able to get result from API.                                                    
-                            </div>                            
-                            <div class="alert alert-danger">
-                                <strong>Note:</strong> Able to get result, but system may returns incorrect information.<br><br>
-                                <u>Based on table definition below</u><br>
-                                <strong>OrderItem</strong> – single line for every SKU in the order with the quantity ordered.<br><br>
-                                
-                                I think system returns only a few information which are not enought to implement next step.
-                            </div>                            
-                            @foreach($orders['data'] as $k => $v)
-                                {{ $k . ' => ' . $v }} <br>              
-                            @endforeach 
+
+                            @if(is_null($orders))
+                                <div class="alert alert-danger">
+                                    System error. Please contact your administrator.
+                                </div>
+                            @else                            
+                                <div class="alert alert-success">
+                                    <strong>Test</strong> - To read Order Item from API.<br>
+                                    <strong>Result</strong> - Able to get result from API.                                                    
+                                </div>                            
+                                <div class="alert alert-danger">
+                                    <strong>Note:</strong> Able to get result, but system may returns incorrect information.<br><br>
+                                    <u>Based on table definition below</u><br>
+                                    <strong>OrderItem</strong> – single line for every SKU in the order with the quantity ordered.<br><br>
+                                    
+                                    I think system returns only a few information which are not enought to implement next step.
+                                </div>                            
+                                @foreach($orders['data'] as $k => $v)
+                                    {{ $k . ' => ' . $v }} <br>              
+                                @endforeach 
+                            @endif
                         </div>
 
                         <!-- CREATE ORDER -->
