@@ -18,7 +18,7 @@
                         </li>
                         <li role="presentation">
                             <a href="#items" aria-controls="items" role="tab" data-toggle="tab">                             
-                                Items <span class="badge">{{ $items['metadata']['total'] }}</span>
+                                Items <span class="badge">{{-- $items['metadata']['total'] --}}</span>
                             </a>
                         </li>
                         <li role="presentation">
@@ -28,7 +28,7 @@
                         </li>
                         <li role="presentation">
                             <a href="#orders" aria-controls="orders" role="tab" data-toggle="tab">
-                                Orders <span class="badge">{{ $items['metadata']['total'] }}</span>
+                                Orders <span class="badge">{{-- $items['metadata']['total'] --}}</span>
                             </a>
                         </li>
                         <li role="presentation">
@@ -71,7 +71,7 @@
                             @endif
                         </div>
 
-                        <!-- ITEMS -->
+      {{--                  <!-- ITEMS -->
                         <div role="tabpanel" class="tab-pane" id="items">  
                             <h3>Item Lists</h3>
 
@@ -131,7 +131,7 @@
                                 @endforeach 
                             @endif                           
                         </div>
-
+--}}
                         <!-- ORDERS -->
                         <div role="tabpanel" class="tab-pane" id="orders"> 
                             <h3>Order Lists</h3>

@@ -83,17 +83,17 @@ class HomeController extends Controller
             $json = json_encode($xml);        
             $accounts = json_decode($json, true);
 
-            //TODO: GET ALL ITEMS
-            $item_url = 'http://api2-client.myhemisphere.com/items.xml';
-            $client = new Client;
-            $results = $client->request('GET', $item_url, [
-                'query' => [
-                    'sessionKey' => $user_token
-                ]
-            ]);
-            $xml = simplexml_load_string($results->getBody(),'SimpleXMLElement', LIBXML_NOCDATA);
-            $json = json_encode($xml);        
-            $items = json_decode($json, true);
+            // //TODO: GET ALL ITEMS
+            // $item_url = 'http://api2-client.myhemisphere.com/items.xml';
+            // $client = new Client;
+            // $results = $client->request('GET', $item_url, [
+            //     'query' => [
+            //         'sessionKey' => $user_token
+            //     ]
+            // ]);
+            // $xml = simplexml_load_string($results->getBody(),'SimpleXMLElement', LIBXML_NOCDATA);
+            // $json = json_encode($xml);        
+            // $items = json_decode($json, true);
 
             //TODO: GET ITEM ACCOUNT        
             $item_url = 'http://api2-client.myhemisphere.com/items/account.xml';
